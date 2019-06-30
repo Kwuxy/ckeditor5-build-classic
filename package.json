@@ -1,5 +1,5 @@
 {
-  "name": "@ckeditor/ckeditor5-build-classic",
+  "name": "@ckeditor/ckeditor5-build-novelshive",
   "version": "12.2.0",
   "description": "The classic editor build of CKEditor 5 – the best browser-based rich text editor.",
   "keywords": [
@@ -18,7 +18,9 @@
     "collaboration",
     "collaborative",
     "real-time",
-    "framework"
+    "framework",
+  	"ckeditor-novelshive",
+  	"novelshive"
   ],
   "main": "./build/ckeditor.js",
   "files": [
