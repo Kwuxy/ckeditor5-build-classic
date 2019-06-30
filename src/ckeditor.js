@@ -28,6 +28,9 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 
+import AutoSave from '@ckeditor/ckeditor5-autosave/src/autosave';
+import PendingAction from '@ckeditor/ckeditor5-core/src/pendingactions';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -52,7 +55,9 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	AutoSave,
+	PendingAction
 ];
 
 // Editor configuration.

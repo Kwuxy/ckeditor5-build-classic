@@ -25,16 +25,48 @@
 
 	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>
 </div>
+<div id="editor-status"></div>
 
 <script src="../build/ckeditor.js"></script>
 <script>
-	ClassicEditor.create( document.querySelector( '#editor' ) )
+	ClassicEditor.create( document.querySelector( '#editor' ), {
+		autosave: {
+			save( editor ) {
+				return saveData( editor.getData() );
+			}
+		}
+	} )
 		.then( editor => {
 			window.editor = editor;
+
+			displayStatus( editor );
 		} )
 		.catch( err => {
 			console.error( err.stack );
 		} );
+
+	function saveData( data ) {
+		return new Promise( resolve => {
+			setTimeout( () => {
+				console.log( 'Saved', data );
+
+				resolve();
+			}, 500 );
+		} );
+	}
+
+	function displayStatus( editor ) {
+		const pendingActions = editor.plugins.get('PendingActions');
+		const statusIndicator = document.querySelector('#editor-status');
+
+		pendingActions.on('change:hasAny', (evt, propertyName, newValue) => {
+			if (newValue) {
+				statusIndicator.classList.add('busy');
+			} else {
+				statusIndicator.classList.remove('busy');
+			}
+		});
+	}
 </script>
 
 </body>
